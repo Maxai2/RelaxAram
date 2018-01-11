@@ -28,6 +28,9 @@ namespace RelaxAram
             DateTime time;
             bool start = false;
 
+            System.Threading.Timer timer;
+            timer.
+
             while (tbTime.Text != "00:00:00")
             {
                 start = true;
@@ -43,8 +46,8 @@ namespace RelaxAram
                 //TimerCallback tm = new TimerCallback();
                 //System.Threading.Timer timer = new System.Threading.Timer(num, 0, 1000);
 
-                Application.DoEvents();
-                Thread.Sleep(1000);
+                //Application.DoEvents();
+                //Thread.Sleep(1000);
             }
 
             if (start)
