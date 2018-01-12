@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,45 +12,36 @@ namespace RelaxAram
 {
     public partial class RelaxTime : Form
     {
+        Timer timer = null;
         public RelaxTime()
         {
             InitializeComponent();
+
+            timer = new Timer();
+            timer.Interval = 1000;
+            timer.Tick += new EventHandler(timeGo);
         }
 
-        private void RelaxAlarm_Load(object sender, EventArgs e)
+        void TimerOnOff() => timer.Enabled = !timer.Enabled;
+
+        private void bStart_Click(object sender, EventArgs e) => TimerOnOff();
+
+        DateTime time;
+        void timeGo(object sender, EventArgs e)
         {
-
-        } 
-
-        private void bStart_Click(object sender, EventArgs e)
-        {
-            DateTime time;
-            bool start = false;
-
-            System.Threading.Timer timer;
-            timer.
-
-            while (tbTime.Text != "00:00:00")
+            if (tbTime.Text == "00:00:00")
             {
-                start = true;
-
-                int num = 0;
-                time = Convert.ToDateTime(tbTime.Text);
-                //time.ToLongTimeString(); 
-
-                time = time.AddSeconds(-1);
-
-                tbTime.Text = time.ToLongTimeString();
-
-                //TimerCallback tm = new TimerCallback();
-                //System.Threading.Timer timer = new System.Threading.Timer(num, 0, 1000);
-
-                //Application.DoEvents();
-                //Thread.Sleep(1000);
+                Functions.getInstance().SuperMario();
+                TimerOnOff();
+                return;
             }
 
-            if (start)
-                Console.Beep(100, 500);
+            time = Convert.ToDateTime(tbTime.Text);
+            //time.ToLongTimeString(); 
+
+            time = time.AddSeconds(-1);
+
+            tbTime.Text = time.ToLongTimeString();
         }
 
         private void bSet_Click(object sender, EventArgs e)
