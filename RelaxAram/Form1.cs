@@ -46,7 +46,29 @@ namespace RelaxAram
 
         private void bSet_Click(object sender, EventArgs e)
         {
-            string temp = mTBHour.Text + ':' + mTBMinute.Text + ':' + mTBSecond.Text;
+            int hour = Convert.ToInt32(mTBHour.Text);
+            int minute = Convert.ToInt32(mTBMinute.Text);
+            int second = Convert.ToInt32(mTBSecond.Text);
+
+            if (second < 60)
+            {
+                second = 0;
+                minute++;
+            }
+
+            if (minute < 60)
+            {
+                minute = 0;
+                hour++;
+            }
+
+            if (hour < 24)
+                hour = 0;
+
+            string temp = hour < 10 ? '0' + hour.ToString() : hour.ToString() + ':';
+            temp += (minute < 10) ? '0' + minute.ToString() : minute.ToString() + ':';
+            temp += (second < 10) ? '0' + second.ToString() : second.ToString();
+
             tbTime.Text = temp;
         }
 
