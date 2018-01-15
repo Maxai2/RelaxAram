@@ -55,6 +55,8 @@ namespace RelaxAram
             mTBHour.Text = "";
             mTBMinute.Text = "";
             mTBSecond.Text = "";
+
+            tbTime.Text = "00:00:00";
         }
     }
 }
