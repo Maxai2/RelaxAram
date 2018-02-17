@@ -31,13 +31,19 @@
             this.bStart = new System.Windows.Forms.Button();
             this.bClear = new System.Windows.Forms.Button();
             this.tbTime = new System.Windows.Forms.TextBox();
-            this.mTBHour = new System.Windows.Forms.MaskedTextBox();
-            this.mTBMinute = new System.Windows.Forms.MaskedTextBox();
-            this.mTBSecond = new System.Windows.Forms.MaskedTextBox();
             this.bSet = new System.Windows.Forms.Button();
-            this.lHour = new System.Windows.Forms.Label();
-            this.lMinute = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mTBWSecond = new System.Windows.Forms.MaskedTextBox();
             this.lSecond = new System.Windows.Forms.Label();
+            this.mTBWMinute = new System.Windows.Forms.MaskedTextBox();
+            this.lMinute = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.mTBRSecond = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.mTBRMinute = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // bStart
@@ -46,7 +52,7 @@
             this.bStart.Name = "bStart";
             this.bStart.Size = new System.Drawing.Size(75, 23);
             this.bStart.TabIndex = 0;
-            this.bStart.Text = "Start/Stop";
+            this.bStart.Text = "Start";
             this.bStart.UseVisualStyleBackColor = true;
             this.bStart.Click += new System.EventHandler(this.bStart_Click);
             // 
@@ -71,33 +77,6 @@
             this.tbTime.TabStop = false;
             this.tbTime.Text = "01:00:00";
             // 
-            // mTBHour
-            // 
-            this.mTBHour.Location = new System.Drawing.Point(127, 25);
-            this.mTBHour.Mask = "00";
-            this.mTBHour.Name = "mTBHour";
-            this.mTBHour.Size = new System.Drawing.Size(20, 20);
-            this.mTBHour.TabIndex = 3;
-            this.mTBHour.ValidatingType = typeof(int);
-            // 
-            // mTBMinute
-            // 
-            this.mTBMinute.Location = new System.Drawing.Point(127, 51);
-            this.mTBMinute.Mask = "00";
-            this.mTBMinute.Name = "mTBMinute";
-            this.mTBMinute.Size = new System.Drawing.Size(20, 20);
-            this.mTBMinute.TabIndex = 4;
-            this.mTBMinute.ValidatingType = typeof(int);
-            // 
-            // mTBSecond
-            // 
-            this.mTBSecond.Location = new System.Drawing.Point(127, 77);
-            this.mTBSecond.Mask = "00";
-            this.mTBSecond.Name = "mTBSecond";
-            this.mTBSecond.Size = new System.Drawing.Size(20, 20);
-            this.mTBSecond.TabIndex = 5;
-            this.mTBSecond.ValidatingType = typeof(int);
-            // 
             // bSet
             // 
             this.bSet.Location = new System.Drawing.Point(12, 37);
@@ -108,55 +87,125 @@
             this.bSet.UseVisualStyleBackColor = true;
             this.bSet.Click += new System.EventHandler(this.bSet_Click);
             // 
-            // lHour
+            // groupBox1
             // 
-            this.lHour.AutoSize = true;
-            this.lHour.Location = new System.Drawing.Point(103, 28);
-            this.lHour.Name = "lHour";
-            this.lHour.Size = new System.Drawing.Size(18, 13);
-            this.lHour.TabIndex = 13;
-            this.lHour.Text = "H:";
+            this.groupBox1.Controls.Add(this.mTBWSecond);
+            this.groupBox1.Controls.Add(this.lSecond);
+            this.groupBox1.Controls.Add(this.mTBWMinute);
+            this.groupBox1.Controls.Add(this.lMinute);
+            this.groupBox1.Location = new System.Drawing.Point(113, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(106, 76);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Work Time";
             // 
-            // lMinute
+            // mTBWSecond
             // 
-            this.lMinute.AutoSize = true;
-            this.lMinute.Location = new System.Drawing.Point(103, 54);
-            this.lMinute.Name = "lMinute";
-            this.lMinute.Size = new System.Drawing.Size(19, 13);
-            this.lMinute.TabIndex = 14;
-            this.lMinute.Text = "M:";
+            this.mTBWSecond.Location = new System.Drawing.Point(50, 44);
+            this.mTBWSecond.Mask = "00";
+            this.mTBWSecond.Name = "mTBWSecond";
+            this.mTBWSecond.Size = new System.Drawing.Size(20, 20);
+            this.mTBWSecond.TabIndex = 17;
+            this.mTBWSecond.ValidatingType = typeof(int);
             // 
             // lSecond
             // 
             this.lSecond.AutoSize = true;
-            this.lSecond.Location = new System.Drawing.Point(103, 80);
+            this.lSecond.Location = new System.Drawing.Point(26, 47);
             this.lSecond.Name = "lSecond";
             this.lSecond.Size = new System.Drawing.Size(17, 13);
-            this.lSecond.TabIndex = 15;
+            this.lSecond.TabIndex = 19;
             this.lSecond.Text = "S:";
+            // 
+            // mTBWMinute
+            // 
+            this.mTBWMinute.Location = new System.Drawing.Point(50, 18);
+            this.mTBWMinute.Mask = "00";
+            this.mTBWMinute.Name = "mTBWMinute";
+            this.mTBWMinute.Size = new System.Drawing.Size(20, 20);
+            this.mTBWMinute.TabIndex = 16;
+            this.mTBWMinute.ValidatingType = typeof(int);
+            // 
+            // lMinute
+            // 
+            this.lMinute.AutoSize = true;
+            this.lMinute.Location = new System.Drawing.Point(26, 21);
+            this.lMinute.Name = "lMinute";
+            this.lMinute.Size = new System.Drawing.Size(19, 13);
+            this.lMinute.TabIndex = 18;
+            this.lMinute.Text = "M:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.mTBRSecond);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.mTBRMinute);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Location = new System.Drawing.Point(245, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(106, 76);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Rest Time";
+            // 
+            // mTBRSecond
+            // 
+            this.mTBRSecond.Location = new System.Drawing.Point(50, 44);
+            this.mTBRSecond.Mask = "00";
+            this.mTBRSecond.Name = "mTBRSecond";
+            this.mTBRSecond.Size = new System.Drawing.Size(20, 20);
+            this.mTBRSecond.TabIndex = 17;
+            this.mTBRSecond.ValidatingType = typeof(int);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "S:";
+            // 
+            // mTBRMinute
+            // 
+            this.mTBRMinute.Location = new System.Drawing.Point(50, 18);
+            this.mTBRMinute.Mask = "00";
+            this.mTBRMinute.Name = "mTBRMinute";
+            this.mTBRMinute.Size = new System.Drawing.Size(20, 20);
+            this.mTBRMinute.TabIndex = 16;
+            this.mTBRMinute.ValidatingType = typeof(int);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(19, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "M:";
             // 
             // RelaxTime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(169, 121);
-            this.Controls.Add(this.lSecond);
-            this.Controls.Add(this.lMinute);
-            this.Controls.Add(this.lHour);
+            this.ClientSize = new System.Drawing.Size(373, 125);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bSet);
-            this.Controls.Add(this.mTBSecond);
-            this.Controls.Add(this.mTBMinute);
-            this.Controls.Add(this.mTBHour);
             this.Controls.Add(this.tbTime);
             this.Controls.Add(this.bClear);
             this.Controls.Add(this.bStart);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(185, 160);
-            this.MinimumSize = new System.Drawing.Size(185, 160);
             this.Name = "RelaxTime";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RT";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,13 +216,17 @@
         private System.Windows.Forms.Button bStart;
         private System.Windows.Forms.Button bClear;
         private System.Windows.Forms.TextBox tbTime;
-        private System.Windows.Forms.MaskedTextBox mTBHour;
-        private System.Windows.Forms.MaskedTextBox mTBMinute;
-        private System.Windows.Forms.MaskedTextBox mTBSecond;
         private System.Windows.Forms.Button bSet;
-        private System.Windows.Forms.Label lHour;
-        private System.Windows.Forms.Label lMinute;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.MaskedTextBox mTBWSecond;
         private System.Windows.Forms.Label lSecond;
+        private System.Windows.Forms.MaskedTextBox mTBWMinute;
+        private System.Windows.Forms.Label lMinute;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.MaskedTextBox mTBRSecond;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox mTBRMinute;
+        private System.Windows.Forms.Label label2;
     }
 }
 

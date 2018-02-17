@@ -24,61 +24,119 @@ namespace RelaxAram
 
         void TimerOnOff() => timer.Enabled = !timer.Enabled;
 
-        private void bStart_Click(object sender, EventArgs e) => TimerOnOff();
+        bool WorkState = false;
+        int Work = 30 * 60;
+        int Rest = 5 * 60;
+        int Curr;
+
+        private void bStart_Click(object sender, EventArgs e)
+        {
+            TimerOnOff();
+
+            if (timer.Enabled)
+            {
+                bStart.Text = "Stop";
+                WorkState = true;
+                Curr = Work;
+            }
+            else
+            {
+                bStart.Text = "Start";
+            }
+        }
 
         DateTime time;
+
         void timeGo(object sender, EventArgs e)
         {
-            if (tbTime.Text == "00:00:00")
+            Curr--;
+
+            if (Curr == 0)
             {
-                Functions.getInstance().SuperMario();
-                TimerOnOff();
-                return;
+                Console.Beep();
+
+                WorkState = !WorkState;
+
+                if (WorkState)
+                {
+                    Curr = Work;
+                }
+                else
+                {
+                    Curr = Rest;
+                }
+            }
+            else
+            {
+                int sec = Curr % 60;
+                int min = Curr / 60;
+
+                string timeShow = "";
+
+                timeShow += min < 10 ? '0' + min.ToString() : min.ToString();
+
+                timeShow += ':';
+
+                timeShow += sec < 10 ? '0' + sec.ToString() : sec.ToString();
+
+                tbTime.Text = timeShow;
             }
 
-            time = Convert.ToDateTime(tbTime.Text);
-            //time.ToLongTimeString(); 
+            //if (tbTime.Text == "00:00:00")
+            //{
+            //    Functions.getInstance().SuperMario();
+            //    TimerOnOff();
+            //    return;
+            //}
 
-            time = time.AddSeconds(-1);
+            //time = Convert.ToDateTime(tbTime.Text);
+            ////time.ToLongTimeString(); 
 
-            tbTime.Text = time.ToLongTimeString();
+            //time = time.AddSeconds(-1);
+
+            //tbTime.Text = time.ToLongTimeString();
         }
 
         private void bSet_Click(object sender, EventArgs e)
         {
-            int hour = Convert.ToInt32(mTBHour.Text);
-            int minute = Convert.ToInt32(mTBMinute.Text);
-            int second = Convert.ToInt32(mTBSecond.Text);
+            //int hour = Convert.ToInt32(mTBHour.Text);
+            int minute = Convert.ToInt32(mTBWMinute.Text);
+            int second = Convert.ToInt32(mTBWSecond.Text);
+            Work = minute * 60 + second;
 
-            if (second < 60)
-            {
-                second = 0;
-                minute++;
-            }
+            minute = Convert.ToInt32(mTBRMinute.Text);
+            second = Convert.ToInt32(mTBRSecond.Text);
+            Rest = minute * 60 + second;
 
-            if (minute < 60)
-            {
-                minute = 0;
-                hour++;
-            }
+            //if (second < 60)
+            //{
+            //    second = 0;
+            //    minute++;
+            //}
 
-            if (hour < 24)
-                hour = 0;
+            //if (minute < 60)
+            //{
+            //    minute = 0;
+            //    //hour++;
+            //}
 
-            string temp = hour < 10 ? '0' + hour.ToString() : hour.ToString() + ':';
-            temp += (minute < 10) ? '0' + minute.ToString() : minute.ToString() + ':';
-            temp += (second < 10) ? '0' + second.ToString() : second.ToString();
+            //if (hour < 24)
+            //    hour = 0;
 
-            tbTime.Text = temp;
+            //string temp = hour < 10 ? '0' + hour.ToString() : hour.ToString() + ':';
+            //temp += (minute < 10) ? '0' + minute.ToString() : minute.ToString() + ':';
+            //temp += (second < 10) ? '0' + second.ToString() : second.ToString();
+
+            //tbTime.Text = temp;
         }
 
         private void bClear_Click(object sender, EventArgs e)
         {
-            mTBHour.Text = "";
-            mTBMinute.Text = "";
-            mTBSecond.Text = "";
+//            mTBHour.Text = "";
+            mTBWMinute.Text = "";
+            mTBWSecond.Text = "";
 
-            tbTime.Text = "00:00:00";
+            tbTime.Text = "00:00";
         }
     }
 }
